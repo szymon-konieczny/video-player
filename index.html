@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player</title>
+
+    <link href="video-js.min.css" rel="stylesheet" />
+    <link href="videojs-playlist-ui.vertical.css" rel="stylesheet" />
+    <link href="custom.css" rel="stylesheet" />
+
+    <script src="video.min.js"></script>
+    <script src="videojs-playlist.js"></script>
+    <script src="videojs-playlist-ui.min.js"></script>
+  </head>
+  <body>
+    <div class="player-wrapper">
+      <video
+        autoplay
+        id="player"
+        class="video-js vjs-fluid vjs-big-play-centered video-container"
+        controls
+      >
+        <source src="https://test-streams.mux.dev/test_001/stream.m3u8" />
+      </video>
+      <div class="playlist-wrapper">
+        <button class="toggle-button"><</button>
+        <div class="vjs-playlist playlist-container"></div>
+      </div>
+    </div>
+
+    <script>
+      const player = videojs("player");
+
+      player.playlistUi();
+
+      player.playlist([
+        {
+          sources: [
+            {
+              src: "http://media.w3.org/2010/05/sintel/trailer.mp4",
+              type: "video/mp4",
+            },
+          ],
+          poster: "http://media.w3.org/2010/05/sintel/poster.png",
+        },
+        {
+          sources: [
+            {
+              src: "http://media.w3.org/2010/05/bunny/trailer.mp4",
+              type: "video/mp4",
+            },
+          ],
+          poster: "http://media.w3.org/2010/05/bunny/poster.png",
+        },
+        {
+          sources: [
+            {
+              src: "http://vjs.zencdn.net/v/oceans.mp4",
+              type: "video/mp4",
+            },
+          ],
+          poster: "http://www.videojs.com/img/poster.jpg",
+        },
+        {
+          sources: [
+            {
+              src: "http://media.w3.org/2010/05/bunny/movie.mp4",
+              type: "video/mp4",
+            },
+          ],
+          poster: "http://media.w3.org/2010/05/bunny/poster.png",
+        },
+        {
+          sources: [
+            {
+              src: "http://media.w3.org/2010/05/video/movie_300.mp4",
+              type: "video/mp4",
+            },
+          ],
+          poster: "http://media.w3.org/2010/05/video/poster.png",
+        },
+      ]);
+
+      // Play through the playlist automatically.
+      player.playlist.autoadvance(0);
+
+      // Initialize the playlist-ui plugin with no option (i.e. the defaults).
+      player.playlistUi();
+    </script>
+  </body>
+</html>
